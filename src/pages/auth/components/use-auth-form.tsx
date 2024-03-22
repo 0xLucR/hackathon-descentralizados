@@ -17,7 +17,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     setTimeout(() => {
       setIsLoading(false);
       navigate("/");
-    }, 3000);
+    }, 1000);
   }
 
   return (
