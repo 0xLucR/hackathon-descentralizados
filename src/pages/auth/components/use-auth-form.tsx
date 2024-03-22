@@ -36,3 +36,4 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     </div>
   );
 }
+//create function generate random number

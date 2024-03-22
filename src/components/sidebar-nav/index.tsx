@@ -19,7 +19,7 @@ export function SidebarNav({ items, pathname }: SidebarNavProps) {
   }
 
   return (
-    <aside className="flex flex-col items-center min-h-screen max-w-[260px] w-full bg-secondary py-8 justify-around fixed overflow-auto">
+    <aside className="flex flex-col items-center min-h-screen max-w-[260px] w-full bg-secondary py-8 justify-around fixed overflow-auto rounded-xl">
       <div className="flex w-full flex-col items-center justify-center gap-8 px-4">
         <img className="w-32 h-28" src="/logo-escrow-v2.png" />
         <Button className="w-full" onClick={() => navigate("/escrow")}>
