@@ -11,7 +11,7 @@ export function SignIn() {
         </div>
         <div className="lg:p-8">
           <div className="mx-auto flex w-full flex-col justify-center sm:w-[180px] h-[250px]">
-            <img width={300} src="public/logo-escrow-v2.png" alt="Logo Escrow Dapp" />
+            <img width={300} src="/logo-escrow-v2.png" alt="Logo Escrow Dapp" />
           </div>
           <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
             <div className="flex flex-col space-y-2 text-center">
