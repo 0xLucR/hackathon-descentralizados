@@ -1,10 +1,13 @@
-import { Outlet } from "react-router-dom";
+import { SidebarNav } from "@/components/sidebar-nav";
+import { sidebarNavConfig } from "@/config/sidebar-nav";
+import { Outlet, useLocation } from "react-router-dom";
 
 export function AppLayout() {
+  const { pathname } = useLocation();
   return (
-    <div>
-      App
+    <main className="min-h-screen">
+      <SidebarNav items={sidebarNavConfig} pathname={pathname} />
       <Outlet />
-    </div>
+    </main>
   );
 }

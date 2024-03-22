@@ -2,11 +2,13 @@ import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   async function onSubmit(event: React.SyntheticEvent) {
     event.preventDefault();
@@ -14,6 +16,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
 
     setTimeout(() => {
       setIsLoading(false);
+      navigate("/");
     }, 3000);
   }
 
@@ -21,26 +24,15 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     <div className={cn("grid gap-6", className)} {...props}>
       <form onSubmit={onSubmit}>
         <div className="grid gap-2">
-          <div className="grid gap-1">
-          </div>
-          <Button variant="outline"  disabled={isLoading}>
+          <div className="grid gap-1"></div>
+          <Button disabled={isLoading}>
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
-            <img width={100} src="src/assets/logo-metamask.png" alt="MetaMask Fox" />
+            Connect wallet
           </Button>
         </div>
       </form>
-      
-      <Button variant="outline" type="button" disabled={isLoading}>
-        {isLoading && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
-        <img width={70} src="src/assets/logo-ledger.png" alt="Ledger" />
-      </Button>
-
-      <Button variant="outline" type="button" disabled={isLoading}>
-        {isLoading && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
-        <img width={70} src="src/assets/logo-trezor.png" alt="Ledger" />
-      </Button>
     </div>
   );
 }
