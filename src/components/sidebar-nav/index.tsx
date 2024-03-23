@@ -5,6 +5,8 @@ import { Icons } from "../icons";
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
 import { YourWallet } from "./your-wallet";
+import { ModeToggle } from "../mode-toggle";
+import { useTheme } from "../theme-provider";
 
 interface SidebarNavProps {
   items: SidebarNavItem[];
@@ -12,6 +14,7 @@ interface SidebarNavProps {
 }
 
 export function SidebarNav({ items, pathname }: SidebarNavProps) {
+  const { theme } = useTheme();
   const navigate = useNavigate();
 
   function handleDisconnectWallet() {
@@ -19,9 +22,14 @@ export function SidebarNav({ items, pathname }: SidebarNavProps) {
   }
 
   return (
-    <aside className="flex flex-col items-center min-h-screen max-w-[260px] w-full bg-secondary py-8 justify-around fixed overflow-auto rounded-xl">
+    <aside className="flex flex-col items-center min-h-screen max-w-[260px] w-full bg-background border-r py-8 justify-around fixed overflow-auto rounded-xl">
       <div className="flex w-full flex-col items-center justify-center gap-8 px-4">
-        <img className="w-32 h-28" src="/logo-escrow-v2.png" />
+        {theme === "dark" && (
+          <img className="w-32 h-28" src="/logo-escrow-dark.png" />
+        )}
+         {theme === "light" && (
+          <img className="w-32 h-28" src="/logo-escrow-light.png" />
+        )}
         <Button className="w-full" onClick={() => navigate("/escrow")}>
           New Escrow
         </Button>
@@ -55,9 +63,11 @@ export function SidebarNav({ items, pathname }: SidebarNavProps) {
         })}
       </div>
       <Separator />
+
       <div className="flex items-center justify-center w-full px-4">
         <YourWallet handleDisconnectWallet={handleDisconnectWallet} />
       </div>
+      <ModeToggle />
     </aside>
   );
 }
